@@ -1,7 +1,22 @@
-<Navbar [leftContent]="'Back'" [rightContent]="rightContent" (onLeftClick)="onLeftClick()">
-  NavBar
-</Navbar>
-<ng-template #rightContent>
-  <Icon [type]="'search'" [ngStyle]="{ marginRight: '16px' }"></Icon>
-  <Icon [type]="'ellipsis'"></Icon>
+<ng-container *ngIf="!searchFlag;else focusElse">
+  <Navbar [icon]="icon" [rightContent]="rightContent" (onLeftClick)="onLeftClick()">
+    NavBar
+  </Navbar>
+  <ng-template #icon>
+    <Icon [type]="'left'"></Icon>
+  </ng-template>
+  <ng-template #rightContent>
+    <Icon [type]="'search'" [ngStyle]="{ marginRight: '16px' }" (click)="showSearch()"></Icon>
+    <Icon [type]="'ellipsis'"></Icon>
+  </ng-template>
+</ng-container>
+<ng-template #focusElse>
+  <div style="border-bottom: 1px solid #ddd;">
+    <SearchBar [placeholder]="'自动获取光标'" [setFocus]="autoFocus" (onCancel)="cancelSearch()"
+               (onSubmit)="search()" [(ngModel)]="searchText"></SearchBar>
+  </div>
 </ng-template>
+
+
+
+
