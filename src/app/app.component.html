@@ -1,0 +1,7 @@
+<Navbar [leftContent]="'Back'" [rightContent]="rightContent" (onLeftClick)="onLeftClick()">
+  NavBar
+</Navbar>
+<ng-template #rightContent>
+  <Icon [type]="'search'" [ngStyle]="{ marginRight: '16px' }"></Icon>
+  <Icon [type]="'ellipsis'"></Icon>
+</ng-template>
